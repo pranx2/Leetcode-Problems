@@ -1,28 +1,30 @@
 #include<stdio.h>
 #include<stdlib.h>
-int* sum(int *nums, int Size, int tgt);
-   int main (){
-      int nums[]={2,7,11,15};
-      int Size=4;
-      int tgt = 9;
-      int* index= sum(nums , Size ,tgt);
-      printf("[%d,%d]",index[0],index[1]);
-      
-   }
-   int* sum(int *nums, int Size, int tgt){
-      int *arr;
-      arr = (int *) malloc (2*sizeof(int));
-      int num1 = 0;
-      int num2 = 0;
-      for (int i = 0; i < Size; i++){
-         for (int j = 1 ; i < Size; i++){
-            if (nums[i] + nums [j] == tgt){
-              num1 = i;
-              num2 = j;
+int* twosum(int* nums, int size,int target);
+    int main (){
+        int size=0;
+        int nums[size];
+        int target;
+        // int* returnSize = 2;
+        scanf("%d",&size);//Enter array size;
+        for (int i = 0; i < size; i++){
+            scanf("%d",&nums[i]);//Enter array;
+        };
+        scanf("%d",&target);//Enter Target;
+        int* index = twosum(nums , size , target);
+        printf("[%d,%d]",index[0],index[1]);
+    }
+    //leetcode code starts Form Here! to submission add //int* returnSize=2; into the function parameter; 
+    int* twosum(int*  nums, int size,int target){
+        // *returnSize = 2; //uncomment this line for submission; 
+        int *arr = (int *) malloc(2 * sizeof(int));//allocate memory;
+        for (int i = 0; i < size ; i++){
+            for(int j = 0; j < size ; j++){
+                if((nums[i]+ nums[j] == target) && (i!=j)){
+                        arr[0] = i;
+                        arr[1] = j;
+                }
             }
-         }
-      }
-   arr[0]= num1;
-   arr[1]= num2;
-      return arr;
-   }
+        }
+            return arr;//return malloc;
+    }
